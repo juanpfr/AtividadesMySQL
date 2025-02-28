@@ -1,3 +1,21 @@
+USE diversas_tabelas;
+
+DELIMITER $
+CREATE PROCEDURE contador(limite INT)
+BEGIN
+	DECLARE x INT DEFAULT 0;
+    teste: LOOP
+SET x = x + 1;
+SELECT x;
+	IF x = limite THEN
+		LEAVE teste;
+	END IF;
+    END LOOP teste;
+END $
+DELIMITER ;
+
+CALL contador(2);
+
 DELIMITER $
 CREATE PROCEDURE acumula (limite INT)
 BEGIN
